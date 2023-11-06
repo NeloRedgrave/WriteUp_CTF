@@ -1,57 +1,52 @@
-keygenme-py
-  keygenme-trial.py 
-< https://mercury.picoctf.net/static/0c363291c47477642c72630d68936e50/keygenme-trial.py >
-  Penyelesaian :
-Pada file python tersebut , jika kita jalankan maka yang akan muncul adalah :
-_Welcome to the Arcane Calculator, MORTON!
+keygenme-py<br>
+======
+  keygenme-trial.py
+< https://mercury.picoctf.net/static/0c363291c47477642c72630d68936e50/keygenme-trial.py > <br>
+  Penyelesaian : <br>
+Pada file python tersebut , jika kita jalankan maka yang akan muncul adalah : <br>
 
-This is the trial version of Arcane Calculator.
-The full version may be purchased in person near
-the galactic center of the Milky Way galaxy. 
-Available while supplies last!
-=====================================================
+    _Welcome to the Arcane Calculator, MORTON!
+    
+    This is the trial version of Arcane Calculator.
+    The full version may be purchased in person near.
+    the galactic center of the Milky Way galaxy.
+    Available while supplies last!
+ 
+    ___Arcane Calculator___
+ 
+    Menu:
+    (a) Estimate Astral Projection Mana Burn 
+    (b) [LOCKED] Estimate Astral Slingshot Approach Vector 
+    (c) Enter License Key 
+    (d) Exit Arcane Calculator
+    What would you like to do, MORTON (a/b/c/d)?
 
-
-___Arcane Calculator___
-
-Menu:
-(a) Estimate Astral Projection Mana Burn
-(b) [LOCKED] Estimate Astral Slingshot Approach Vector
-(c) Enter License Key
-(d) Exit Arcane Calculator
-What would you like to do, MORTON (a/b/c/d)?_
 Nah disini kita tidak mempunyai informasi apapun mengenai hal hal daiatas maka dari itu kita akan mengubah isi dari
-file pyhton <keygenme.py> maka dari itu kita akan mengidentifikasi dan jika perlu mengubah isi dari file python tersebut
+file pyhton <keygenme.py> maka dari itu kita akan mengidentifikasi dan jika perlu mengubah isi dari file python tersebut <br>
 Identifikasi:
 
-import hashlib
-import base64
-
-# GLOBALS --v
-arcane_loop_trial = True
-jump_into_full = False
-full_version_code = ""
-
-
-# GLOBALS --v
-arcane_loop_trial = True
-jump_into_full = False
-full_version_code = ""
-
-username_trial = "MORTON"
-bUsername_trial = b"MORTON"
-
-key_part_static1_trial = "picoCTF{1n_7h3_|<3y_of_"
-key_part_dynamic1_trial = "xxxxxxxx"
-key_part_static2_trial = "}"
-key_full_template_trial = key_part_static1_trial + key_part_dynamic1_trial + key_part_static2_trial
-
+    import hashlib
+    import base64 
+    
+    #GLOBALS --v <br>
+    arcane_loop_trial = True <br>
+    jump_into_full = False <br>
+    full_version_code = "" <br>
+    
+    username_trial = "MORTON" <br>
+    bUsername_trial = b"MORTON" <br>
+    
+    key_part_static1_trial = "picoCTF{1n_7h3_|<3y_of_" <br>
+    key_part_dynamic1_trial = "xxxxxxxx" <br>
+    key_part_static2_trial = "}" <br>
+    key_full_template_trial = key_part_static1_trial + key_part_dynamic1_trial + key_part_static2_trial <br>
+ 
 Pada bagian tersebut kita dapat melihat ada 2 username yaitu username_trial dan bUsername_trial nah pada bagian ini
 kita bisa menggunakan salah satunya. ternyata flagnya sudah tersedia hanya tinggal 1 bagian lagi yang belum tersedia dan masih
-di sensor "xxxxxxxxx" , dan pada bagian key_full_template_trial kita dapat melihat bahwa yang kurang adalah
-key_part_dynamic1_trial , dan maka dari itu kita akan scroll kebawah untuk melihat bagaimana dynamic part dihasilkan
+di sensor "xxxxxxxxx" , dan pada bagian _key_full_template_trial_ kita dapat melihat bahwa yang kurang adalah
+_key_part_dynamic1_trial_ , dan maka dari itu kita akan scroll kebawah untuk melihat bagaimana dynamic part dihasilkan
 
-def check_key(key, username_trial):
+    def check_key(key, username_trial):
 
     global key_full_template_trial
 
@@ -69,79 +64,79 @@ def check_key(key, username_trial):
 Ini adalah bagaimana dynamic key dihasilkan dan kita harus cek apakah key nya sudah cukup panjang , setelah pengecekan
 jika kita telah menyelesaikan static part pertama kita bisa copy paste.
 
-if key[i] != hashlib.sha256(username_trial).hexdigest()[4]:
+    if key[i] != hashlib.sha256(username_trial).hexdigest()[4]:
     return False
-else:
+    else:
+    i += 1
+    
+    if key[i] != hashlib.sha256(username_trial).hexdigest()[5]:
+    return False
+    else:
+    i += 1
+    
+    if key[i] != hashlib.sha256(username_trial).hexdigest()[3]:
+    return False
+    else:
+    i += 1
+    
+    if key[i] != hashlib.sha256(username_trial).hexdigest()[6]:
+    return False
+    else:
+    i += 1
+    
+    if key[i] != hashlib.sha256(username_trial).hexdigest()[2]:
+    return False
+    else:
+    i += 1
+    
+    if key[i] != hashlib.sha256(username_trial).hexdigest()[7]:
+    return False
+    else:
     i += 1
 
-if key[i] != hashlib.sha256(username_trial).hexdigest()[5]:
+    if key[i] != hashlib.sha256(username_trial).hexdigest()[1]:
     return False
-else:
+    else:
     i += 1
 
-if key[i] != hashlib.sha256(username_trial).hexdigest()[3]:
-    return False
-else:
-    i += 1
-
-if key[i] != hashlib.sha256(username_trial).hexdigest()[6]:
-    return False
-else:
-    i += 1
-
-if key[i] != hashlib.sha256(username_trial).hexdigest()[2]:
-    return False
-else:
-    i += 1
-
-if key[i] != hashlib.sha256(username_trial).hexdigest()[7]:
-    return False
-else:
-    i += 1
-
-if key[i] != hashlib.sha256(username_trial).hexdigest()[1]:
-    return False
-else:
-    i += 1
-
-if key[i] != hashlib.sha256(username_trial).hexdigest()[8]:
+    if key[i] != hashlib.sha256(username_trial).hexdigest()[8]:
     return False
 
-Pada bagian ini kita dapat mengetahui bahwa kita mempunyai index {4,5,3,6,2,7,1,8} Bagaiamana kita menggunakan 
-informasi ini ? kita tahu bahwa hash nya adalah sha256 dan usernamenya adalah MORTON , berikutnya tinggal kalkulasikan
+Pada bagian ini kita dapat mengetahui bahwa kita mempunyai index_ {4,5,3,6,2,7,1,8} _Bagaiamana kita menggunakan 
+informasi ini ? kita tahu bahwa hash nya adalah _sha256_ dan usernamenya adalah _MORTON_ , berikutnya tinggal kalkulasikan
 dan ambil karakter / informasi yang sesuai
 
 Penyelesaian Akhir:
-import hashlib
-import base64
 
+    import hashlib
+    import base64
 
-key_part_static1_trial = "picoCTF{1n_7h3_|<3y_of_"
-key_part_dynamic1_trial = "xxxxxxxx"
-key_part_static2_trial = "}"
-key_full_template_trial = key_part_static1_trial + key_part_dynamic1_trial + key_part_static2_trial
+    key_part_static1_trial = "picoCTF{1n_7h3_|<3y_of_"
+    key_part_dynamic1_trial = "xxxxxxxx"
+    key_part_static2_trial = "}"
+    key_full_template_trial = key_part_static1_trial + key_part_dynamic1_trial + key_part_static2_trial
 
-# Pada bagian username menyesuaikan dengan konfigurasi dibawahnya dan berikan 'b' sebelum nama user
-username_trial = b"MORTON"
+    # Pada bagian username menyesuaikan dengan konfigurasi dibawahnya dan berikan 'b' sebelum nama user
+    username_trial = b"MORTON"
 
-potential_dynamic_key = ""
+    potential_dynamic_key = ""
 
-# Bagian dimana input dimulai
-offset = 23
+    # Bagian dimana input dimulai
+    offset = 23
 
-# posisi pada username_trial
-positions = [4,5,3,6,2,7,1,8]
+    # posisi pada username_trial
+    positions = [4,5,3,6,2,7,1,8]
 
-for p in positions:
+    for p in positions:
     potential_dynamic_key += hashlib.sha256(username_trial).hexdigest()[p]
 
-# key_part_dynamic1_trial diganti dengan potential_dynamic_key
-key = key_part_static1_trial + potential_dynamic_key + key_part_static2_trial
-print(key)
-print(len(key))
+    # key_part_dynamic1_trial diganti dengan potential_dynamic_key
+    key = key_part_static1_trial + potential_dynamic_key + key_part_static2_trial
+    print(key)
+    print(len(key))
 
-Hasil:
-picoCTF{1n_7h3_|<3y_of_75fc1081}
-32
+Hasil: <br>
+picoCTF{1n_7h3_|<3y_of_75fc1081} <br>
+32 <br>
 
 
