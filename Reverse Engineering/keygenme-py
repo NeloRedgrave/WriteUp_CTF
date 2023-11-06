@@ -115,8 +115,8 @@ key_part_dynamic1_trial = "xxxxxxxx"
 key_part_static2_trial = "}"
 key_full_template_trial = key_part_static1_trial + key_part_dynamic1_trial + key_part_static2_trial
 
-# Username ambil salah satu
-username_trial = "MORTON"
+# Pada bagian username menyesuaikan dengan konfigurasi dibawahnya dan berikan 'b' sebelum nama user
+username_trial = b"MORTON"
 
 potential_dynamic_key = ""
 
@@ -134,5 +134,8 @@ key = key_part_static1_trial + potential_dynamic_key + key_part_static2_trial
 print(key)
 print(len(key))
 
+Hasil:
+picoCTF{1n_7h3_|<3y_of_75fc1081}
+32
 
 
