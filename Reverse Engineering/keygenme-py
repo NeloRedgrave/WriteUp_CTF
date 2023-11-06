@@ -21,7 +21,7 @@ Menu:
 (d) Exit Arcane Calculator
 What would you like to do, MORTON (a/b/c/d)?
 Nah disini kita tidak mempunyai informasi apapun mengenai hal hal daiatas maka dari itu kita akan mengubah isi dari
-file pyhton <keygenme.py>
+file pyhton <keygenme.py> maka dari itu kita akan mengidentifikasi dan jika perlu mengubah isi dari file python tersebut
 Identifikasi:
 
 import hashlib
