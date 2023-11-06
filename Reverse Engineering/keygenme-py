@@ -22,4 +22,117 @@ Menu:
 What would you like to do, MORTON (a/b/c/d)?
 Nah disini kita tidak mempunyai informasi apapun mengenai hal hal daiatas maka dari itu kita akan mengubah isi dari
 file pyhton <keygenme.py>
+Identifikasi:
+
+import hashlib
+import base64
+
+# GLOBALS --v
+arcane_loop_trial = True
+jump_into_full = False
+full_version_code = ""
+
+username_trial = "MORTON"
+bUsername_trial = b"MORTON"
+
+key_part_static1_trial = "picoCTF{1n_7h3_|<3y_of_"
+key_part_dynamic1_trial = "xxxxxxxx"
+key_part_static2_trial = "}"
+key_full_template_trial = key_part_static1_trial + key_part_dynamic1_trial + key_part_static2_trial
+
+Pada bagian tersebut kita dapat melihat ada 2 username yaitu username_trial dan bUsername_trial nah pada bagian ini
+kita bisa menggunakan salah satunya. ternyata flagnya sudah tersedia hanya tinggal 1 bagian lagi yang belum tersedia dan masih
+di sensor "xxxxxxxxx" , dan pada bagian key_full_template_trial kita dapat melihat bahwa yang kurang adalah
+key_part_dynamic1_trial , dan maka dari itu kita akan scroll kebawah untuk melihat bagaimana dynamic part dihasilkan
+
+def check_key(key, username_trial):
+
+    global key_full_template_trial
+
+    if len(key) != len(key_full_template_trial):
+        return False
+    else:
+        # Check static base key part --v
+        i = 0
+        for c in key_part_static1_trial:
+            if key[i] != c:
+                return False
+
+            i += 1
+
+Ini adalah bagaimana dynamic key dihasilkan dan kita harus cek apakah key nya sudah cukup panjang , setelah pengecekan
+jika kita telah menyelesaikan static part pertama kita bisa copy paste.
+
+if key[i] != hashlib.sha256(username_trial).hexdigest()[4]:
+    return False
+else:
+    i += 1
+
+if key[i] != hashlib.sha256(username_trial).hexdigest()[5]:
+    return False
+else:
+    i += 1
+
+if key[i] != hashlib.sha256(username_trial).hexdigest()[3]:
+    return False
+else:
+    i += 1
+
+if key[i] != hashlib.sha256(username_trial).hexdigest()[6]:
+    return False
+else:
+    i += 1
+
+if key[i] != hashlib.sha256(username_trial).hexdigest()[2]:
+    return False
+else:
+    i += 1
+
+if key[i] != hashlib.sha256(username_trial).hexdigest()[7]:
+    return False
+else:
+    i += 1
+
+if key[i] != hashlib.sha256(username_trial).hexdigest()[1]:
+    return False
+else:
+    i += 1
+
+if key[i] != hashlib.sha256(username_trial).hexdigest()[8]:
+    return False
+
+Pada bagian ini kita dapat mengetahui bahwa kita mempunyai index {4,5,3,6,2,7,1,8} Bagaiamana kita menggunakan 
+informasi ini ? kita tahu bahwa hash nya adalah sha256 dan usernamenya adalah MORTON , berikutnya tinggal kalkulasikan
+dan ambil karakter / informasi yang sesuai
+
+Penyelesaian Akhir:
+import hashlib
+import base64
+
+
+key_part_static1_trial = "picoCTF{1n_7h3_|<3y_of_"
+key_part_dynamic1_trial = "xxxxxxxx"
+key_part_static2_trial = "}"
+key_full_template_trial = key_part_static1_trial + key_part_dynamic1_trial + key_part_static2_trial
+
+# Username ambil salah satu
+username_trial = "MORTON"
+
+potential_dynamic_key = ""
+
+# Bagian dimana input dimulai
+offset = 23
+
+# posisi pada username_trial
+positions = [4,5,3,6,2,7,1,8]
+
+for p in positions:
+    potential_dynamic_key += hashlib.sha256(username_trial).hexdigest()[p]
+
+# key_part_dynamic1_trial diganti dengan potential_dynamic_key
+key = key_part_static1_trial + potential_dynamic_key + key_part_static2_trial
+print(key)
+print(len(key))
+
+
 
