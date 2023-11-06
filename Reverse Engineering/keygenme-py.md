@@ -3,7 +3,7 @@ keygenme-py
 < https://mercury.picoctf.net/static/0c363291c47477642c72630d68936e50/keygenme-trial.py >
   Penyelesaian :
 Pada file python tersebut , jika kita jalankan maka yang akan muncul adalah :
-Welcome to the Arcane Calculator, MORTON!
+_Welcome to the Arcane Calculator, MORTON!
 
 This is the trial version of Arcane Calculator.
 The full version may be purchased in person near
@@ -19,13 +19,19 @@ Menu:
 (b) [LOCKED] Estimate Astral Slingshot Approach Vector
 (c) Enter License Key
 (d) Exit Arcane Calculator
-What would you like to do, MORTON (a/b/c/d)?
+What would you like to do, MORTON (a/b/c/d)?_
 Nah disini kita tidak mempunyai informasi apapun mengenai hal hal daiatas maka dari itu kita akan mengubah isi dari
 file pyhton <keygenme.py> maka dari itu kita akan mengidentifikasi dan jika perlu mengubah isi dari file python tersebut
 Identifikasi:
 
 import hashlib
 import base64
+
+# GLOBALS --v
+arcane_loop_trial = True
+jump_into_full = False
+full_version_code = ""
+
 
 # GLOBALS --v
 arcane_loop_trial = True
