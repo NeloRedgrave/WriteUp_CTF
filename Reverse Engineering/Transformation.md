@@ -4,10 +4,15 @@ I wonder what this really is... enc <br>
   Penyelesaian: <br>
 Pada file < enc > terdapat sebuah kalimat berbahasa mandarin , disitu kita dapat mengubah kalimat tersebut menjadi
 hex < utf 16 to hex > dan setelah menjadi hex kita akan convert lagi menjadi ASCII < hex to ASCII > <br>
-enc = 灩捯䍔䙻ㄶ形楴獟楮獴㌴摟潦弸弰摤捤㤷慽 <br>
-UTF-16 to Hex = 7069636f4354467b31365f626974735f696e73743334645f6f665f385f30646463643937617d <br>
-Hex to ASCII = picoCTF{16_bits_inst34d_of_8_0ddcd97a} <br>
 
+    enc = 灩捯䍔䙻ㄶ形楴獟楮獴㌴摟潦弸弰摤捤㤷慽 <br>
+  Convert Ke Hex
+    
+    UTF-16 to Hex = 7069636f4354467b31365f626974735f696e73743334645f6f665f385f30646463643937617d
+  Convert ke ASCII
+     
+    Hex to ASCII = picoCTF{16_bits_inst34d_of_8_0ddcd97a} <br>
+  Maka Flag Dari Soal Ini Adalah "picoCTF{16_bits_inst34d_of_8_0ddcd97a}"
 
 
 
